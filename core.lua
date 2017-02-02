@@ -1,5 +1,6 @@
 
 
+    local TEXTURE   = [[Interface\AddOns\modui\statusbar\texture\name2.tga]]
     local _, class  = UnitClass'player'
     local colour    = RAID_CLASS_COLORS[class]
     local orig      = {}
@@ -12,6 +13,7 @@
 
     PlayerFrameHealthBar:SetHeight(29)
     PlayerFrameHealthBar:SetPoint('TOPLEFT', 106, -22)
+    PlayerFrameHealthBar:SetStatusBarTexture(TEXTURE)
 
     PlayerFrameHealthBarText:SetPoint('CENTER', 50, 5)
 
@@ -22,6 +24,7 @@
 
     TargetFrameHealthBar:SetHeight(29)
     TargetFrameHealthBar:SetPoint('TOPLEFT', 6, -22)
+    TargetFrameHealthBar:SetStatusBarTexture(TEXTURE)
 
     TargetDeadText:SetPoint('CENTER', -50, 6)
 
