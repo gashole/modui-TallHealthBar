@@ -1,0 +1,5 @@
+## Interface: 11200
+## Title: modui-UnitFramesImproved
+## Notes: UnitFramesImproved for modui. Basic version.
+## RequiredDeps: modui
+core.lua
