@@ -15,8 +15,6 @@
     PlayerFrameHealthBar:SetPoint('TOPLEFT', 106, -22)
     PlayerFrameHealthBar:SetStatusBarTexture(TEXTURE)
 
-    PlayerFrameHealthBarText:SetPoint('CENTER', 50, 5)
-
     PlayerFrameTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-TargetingFrame]]
     PlayerStatusTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-Player-Status]]
 
@@ -25,8 +23,6 @@
     TargetFrameHealthBar:SetHeight(29)
     TargetFrameHealthBar:SetPoint('TOPLEFT', 6, -22)
     TargetFrameHealthBar:SetStatusBarTexture(TEXTURE)
-
-    TargetDeadText:SetPoint('CENTER', -50, 6)
 
     function TargetFrame_CheckClassification()
         orig.TargetFrame_CheckClassification()
