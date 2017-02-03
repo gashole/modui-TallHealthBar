@@ -1,8 +1,8 @@
-![modui-TallHealthBar](http://i.imgur.com/kAHlIJo.png)
+![modui-TallHealthBar](http://i.imgur.com/RmRtWSj.png)
 
 # modui-TallHealthBar
 
-Adds taller player and target health bars to modui.
+Adds taller player and target health bars to [modui](https://github.com/obble/modui).
 
 ## Install
 
