@@ -1,0 +1,5 @@
+## Interface: 11200
+## Title: modui-TallHealthBar
+## Notes: Adds taller player and target health bars to modui.
+## RequiredDeps: modui
+core.lua

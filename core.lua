@@ -17,8 +17,8 @@
 
     PlayerFrameHealthBarText:SetPoint('CENTER', 50, 5)
 
-    PlayerFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame]]
-    PlayerStatusTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-Player-Status]]
+    PlayerFrameTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-TargetingFrame]]
+    PlayerStatusTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-Player-Status]]
 
     TargetFrameNameBackground:Hide()
 
@@ -30,7 +30,7 @@
 
     function TargetFrame_CheckClassification()
         orig.TargetFrame_CheckClassification()
-        TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame]]
+        TargetFrameTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-TargetingFrame]]
     end
 
     function HealthBar_OnValueChanged(v, smooth)

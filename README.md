@@ -1,16 +1,14 @@
-![modui-UnitFramesImproved](http://i.imgur.com/kAHlIJo.png)
+![modui-TallHealthBar](http://i.imgur.com/kAHlIJo.png)
 
-# modui-UnitFramesImproved
+# modui-TallHealthBar
 
-UnitFramesImproved for modui. Basic version.
-
-Full version: https://github.com/Ko0z/UnitFramesImproved_Vanilla
+Adds taller player and target health bars to modui.
 
 ## Install
 
-1. [Download modui-UnitFramesImproved](https://github.com/gashole/modui-UnitFramesImproved/releases/download/current/modui-UnitFramesImproved.zip)
+1. [Download modui-TallHealthBar](https://github.com/gashole/modui-TallHealthBar/releases/download/current/modui-TallHealthBar.zip)
 2. Extract the zip to an easy to find location such as your Desktop
-3. Move the modui-UnitFramesImproved folder into your AddOns folder
+3. Move the modui-TallHealthBar folder into your AddOns folder
 
 ## Install modui (Required)
 
