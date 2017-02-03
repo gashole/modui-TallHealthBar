@@ -5,8 +5,8 @@
     local colour    = RAID_CLASS_COLORS[class]
     local orig      = {}
 
-    orig.HealthBar_OnValueChanged           = HealthBar_OnValueChanged
     orig.TargetFrame_CheckClassification    = TargetFrame_CheckClassification
+    orig.HealthBar_OnValueChanged           = HealthBar_OnValueChanged
 
     PlayerFrameBackground:SetHeight(29)
     PlayerFrameBackground.bg:Hide()
@@ -28,8 +28,10 @@
 
     TargetDeadText:SetPoint('CENTER', -50, 6)
 
-    TargetFrameNameBackground:Hide()
-
+    function TargetFrame_CheckClassification()
+        orig.TargetFrame_CheckClassification()
+        TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame]]
+    end
 
     function HealthBar_OnValueChanged(v, smooth)
         if this == PlayerFrameHealthBar then
@@ -42,22 +44,6 @@
             else
                 orig.HealthBar_OnValueChanged(v, smooth)
             end
-        end
-    end
-
-    function TargetFrame_CheckClassification()
-        orig.TargetFrame_CheckClassification()
-        local  classification = UnitClassification'target'
-        if     classification == 'worldboss' then
-            TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame-Elite]]
-        elseif classification == 'rareelite' then
-            TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame-Rare-Elite]]
-        elseif classification == 'elite' then
-            TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame-Elite]]
-        elseif classification == 'rare' then
-            TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame-Rare]]
-        else
-            TargetFrameTexture:SetTexture[[Interface\AddOns\modui-UnitFramesImproved\Textures\UI-TargetingFrame]]
         end
     end
 
