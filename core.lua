@@ -32,14 +32,12 @@
     function HealthBar_OnValueChanged(v, smooth)
         if this == PlayerFrameHealthBar then
             PlayerFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b, 1)
+        elseif this == TargetFrameHealthBar and UnitIsPlayer'target' then
+            local _, class = UnitClass'target'
+            local colour = RAID_CLASS_COLORS[class]
+            TargetFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b, 1)
         else
-            if this == TargetFrameHealthBar and UnitIsPlayer'target' then
-                local _, class = UnitClass'target'
-                local colour = RAID_CLASS_COLORS[class]
-                TargetFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b, 1)
-            else
-                orig.HealthBar_OnValueChanged(v, smooth)
-            end
+            orig.HealthBar_OnValueChanged(v, smooth)
         end
     end
 
