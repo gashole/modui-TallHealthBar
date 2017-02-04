@@ -8,7 +8,7 @@
     orig.TargetFrame_CheckClassification    = TargetFrame_CheckClassification
     orig.HealthBar_OnValueChanged           = HealthBar_OnValueChanged
 
-    PlayerFrameBackground:SetHeight(29)
+    PlayerFrameBackground:SetHeight(41)
     PlayerFrameBackground.bg:Hide()
 
     PlayerFrameHealthBar:SetHeight(29)
