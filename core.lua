@@ -1,8 +1,6 @@
 
 
     local TEXTURE   = [[Interface\AddOns\modui\statusbar\texture\name2.tga]]
-    local _, class  = UnitClass'player'
-    local colour    = RAID_CLASS_COLORS[class]
     local orig      = {}
 
     orig.TargetFrame_CheckClassification    = TargetFrame_CheckClassification
@@ -30,14 +28,11 @@
     end
 
     function HealthBar_OnValueChanged(v, smooth)
-        if this == PlayerFrameHealthBar then
-            PlayerFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b, 1)
-        elseif this == TargetFrameHealthBar and UnitIsPlayer'target' then
-            local _, class = UnitClass'target'
+        orig.HealthBar_OnValueChanged(v, smooth)
+        if this == PlayerFrameHealthBar or (this == TargetFrameHealthBar and UnitIsPlayer(this.unit)) then
+            local _, class = UnitClass(this.unit)
             local colour = RAID_CLASS_COLORS[class]
-            TargetFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b, 1)
-        else
-            orig.HealthBar_OnValueChanged(v, smooth)
+            this:SetStatusBarColor(colour.r, colour.g, colour.b)
         end
     end
 
