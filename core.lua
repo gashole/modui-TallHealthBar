@@ -17,11 +17,21 @@
     PlayerFrameTexture:SetTexture(FRAME_TEXTURE)
     PlayerStatusTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-Player-Status]]
 
+    PlayerFrameHealthBarText:SetPoint('CENTER', 50, 5)
+
     TargetFrameNameBackground:Hide()
 
     TargetFrameHealthBar:SetHeight(29)
     TargetFrameHealthBar:SetPoint('TOPLEFT', 6, -22)
     TargetFrameHealthBar:SetStatusBarTexture(TEXTURE)
+
+    if MobHealth3 then
+        MobHealth3BlizzardHealthText:ClearAllPoints()
+        MobHealth3BlizzardHealthText:SetPoint('CENTER', TargetFrame, -50, 5)
+
+        MobHealth3BlizzardPowerText:ClearAllPoints()
+        MobHealth3BlizzardPowerText:SetPoint('CENTER', TargetFrame, -50, -8)
+    end
 
     function TargetFrame_CheckClassification()
         orig.TargetFrame_CheckClassification()
@@ -44,9 +54,16 @@
         orig.FocusFrame_HealthUpdate        = FocusFrame_HealthUpdate
 
         FocusFrameNameBackground:Hide()
+
         FocusFrameHealthBar:SetHeight(29)
         FocusFrameHealthBar:SetPoint('TOPLEFT', 6, -22)
         FocusFrameHealthBar:SetStatusBarTexture(TEXTURE)
+
+        FocusFrameHealthBarText:SetPoint('CENTER', -50, 5)
+
+        FocusFrameManaBarText:SetPoint('CENTER', -50, -8)
+
+        FocusDeadText:SetPoint('CENTER', -50, 5)
 
         function FocusFrame_CheckClassification(unit)
             orig.FocusFrame_CheckClassification(unit)
