@@ -1,4 +1,4 @@
-![modui-TallHealthBar](http://i.imgur.com/RmRtWSj.png)
+![modui-TallHealthBar](http://i.imgur.com/5bgqJle.png)
 
 # modui-TallHealthBar
 
