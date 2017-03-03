@@ -15,6 +15,7 @@
     PlayerFrameHealthBar:SetStatusBarTexture(TEXTURE)
 
     PlayerFrameTexture:SetTexture(FRAME_TEXTURE)
+
     PlayerStatusTexture:SetTexture[[Interface\AddOns\modui-TallHealthBar\Textures\UI-Player-Status]]
 
     PlayerFrameHealthBarText:SetPoint('CENTER', 50, 5)
@@ -48,10 +49,8 @@
     end
 
     if IsAddOnLoaded'modui-FocusFrame' then
-        local _, class = UnitClass'player'
-
-        orig.FocusFrame_CheckClassification = FocusFrame_CheckClassification
-        orig.FocusFrame_HealthUpdate        = FocusFrame_HealthUpdate
+        local Focus     = _G['FocusData']
+        local class
 
         FocusFrameNameBackground:Hide()
 
@@ -65,20 +64,20 @@
 
         FocusDeadText:SetPoint('CENTER', -50, 5)
 
-        function FocusFrame_CheckClassification(unit)
-            orig.FocusFrame_CheckClassification(unit)
+        Focus:OnEvent('UNIT_CLASSIFICATION_CHANGED', function()
             FocusFrameTexture:SetTexture(FRAME_TEXTURE)
-            if UnitIsPlayer(unit) then _, class = UnitClass(unit) end
-        end
+            if Focus:GetData'unitIsPlayer' then
+                local unit = Focus:GetData'unit'
+                _, class = UnitClass(unit)
+            end
+        end)
 
-        function FocusFrame_HealthUpdate(unit)
-            orig.FocusFrame_HealthUpdate(unit)
-            local data = FocusFrame_GetFocusData(CURR_FOCUS_TARGET)
-            if data.npc == '1' then
+        Focus:OnEvent('UNIT_HEALTH_OR_POWER', function()
+            if Focus:GetData'unitIsPlayer' then
                 local colour = RAID_CLASS_COLORS[class]
                 FocusFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b)
             end
-        end
+        end)
     end
 
     --
