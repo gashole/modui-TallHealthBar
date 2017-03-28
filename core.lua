@@ -5,6 +5,7 @@
     local orig          = {}
 
     orig.TargetFrame_CheckClassification    = TargetFrame_CheckClassification
+    orig.TargetFrame_CheckFaction           = TargetFrame_CheckFaction
     orig.HealthBar_OnValueChanged           = HealthBar_OnValueChanged
 
     PlayerFrameBackground:SetHeight(41)
@@ -39,17 +40,31 @@
         TargetFrameTexture:SetTexture(FRAME_TEXTURE)
     end
 
+    function TargetFrame_CheckFaction()
+        orig.TargetFrame_CheckFaction()
+        if not UnitIsPlayer'target' then
+            local r, g, b = TargetFrameNameBackground:GetVertexColor()
+            TargetFrameHealthBar:SetStatusBarColor(r, g, b)
+        end
+    end
+
     function HealthBar_OnValueChanged(v, smooth)
         orig.HealthBar_OnValueChanged(v, smooth)
-        if this == PlayerFrameHealthBar or (this == TargetFrameHealthBar and UnitIsPlayer(this.unit)) then
-            local _, class = UnitClass(this.unit)
-            local colour = RAID_CLASS_COLORS[class]
-            this:SetStatusBarColor(colour.r, colour.g, colour.b)
+        if this == PlayerFrameHealthBar or this == TargetFrameHealthBar then
+            local r, g, b
+            if UnitIsPlayer(this.unit) then
+                local _, class = UnitClass(this.unit)
+                local colour = RAID_CLASS_COLORS[class]
+                r, g, b = colour.r, colour.g, colour.b
+            else
+                r, g, b = TargetFrameNameBackground:GetVertexColor()
+            end
+            this:SetStatusBarColor(r, g, b)
         end
     end
 
     if IsAddOnLoaded'modui-FocusFrame' then
-        local Focus     = _G['FocusData']
+        local Focus = _G['FocusData']
         local class
 
         FocusFrameNameBackground:Hide()
@@ -73,10 +88,14 @@
         end)
 
         Focus:OnEvent('UNIT_HEALTH_OR_POWER', function()
+            local r, g, b
             if Focus:GetData'unitIsPlayer' then
                 local colour = RAID_CLASS_COLORS[class]
-                FocusFrameHealthBar:SetStatusBarColor(colour.r, colour.g, colour.b)
+                r, g, b = colour.r, colour.g, colour.b
+            else
+                r, g, b = FocusFrameNameBackground:GetVertexColor()
             end
+            FocusFrameHealthBar:SetStatusBarColor(r, g, b)
         end)
     end
 
