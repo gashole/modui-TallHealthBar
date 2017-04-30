@@ -24,7 +24,7 @@
     TargetFrameNameBackground:Hide()
 
     TargetFrameHealthBar:SetHeight(29)
-    TargetFrameHealthBar:SetPoint('TOPLEFT', 6, -22)
+    TargetFrameHealthBar:SetPoint('TOPLEFT', 7, -22)
     TargetFrameHealthBar:SetStatusBarTexture(TEXTURE)
 
     if MobHealth3 then
@@ -70,7 +70,7 @@
         FocusFrameNameBackground:Hide()
 
         FocusFrameHealthBar:SetHeight(29)
-        FocusFrameHealthBar:SetPoint('TOPLEFT', 6, -22)
+        FocusFrameHealthBar:SetPoint('TOPLEFT', 7, -22)
         FocusFrameHealthBar:SetStatusBarTexture(TEXTURE)
 
         FocusFrameHealthBarText:SetPoint('CENTER', -50, 5)
